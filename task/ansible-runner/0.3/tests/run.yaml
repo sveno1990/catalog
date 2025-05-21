@@ -8,6 +8,8 @@ spec:
     - name: runner-dir
   tasks:
     - name: fetch-repository
+      taskRunTemplate:
+        serviceAccountName: sa-1
       taskRef:
         name: git-clone
       workspaces:
@@ -23,6 +25,8 @@ spec:
           value: 'true'
     # ansible-runner
     - name: ansible-runner-run
+      taskRunTemplate:
+        serviceAccountName: sa-1
       taskRef:
         name: ansible-runner
       runAfter:
