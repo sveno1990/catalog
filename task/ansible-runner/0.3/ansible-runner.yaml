@@ -42,7 +42,7 @@ spec:
       description: Ansible runner image.
       default: ghcr.io/ansible/community-ansible-dev-tools:v25.5.1 #tag: v25.5.1
     - name: workspaces_ssl_ca_file
-      default: "ca-bundle.crt"
+      default: ""
 
   stepTemplate:
     env:
@@ -70,7 +70,7 @@ spec:
           ansible-galaxy collection install -vv \
             -r requirements.yml
         fi
-      workingDir: '$(workspaces.runner-dir.path)/$(params.project-dir)'
+      workingDir: '$(workspaces.runner-dir.path)$(params.project-dir)'
 
     - name: run-playbook
       image: $(params.image)
