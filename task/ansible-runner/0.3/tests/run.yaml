@@ -16,9 +16,9 @@ spec:
       params:
         - name: url
           value: |
-            https://github.com/vinamra28/tektoncd-ansible-runner-example
+            https://github.com/sveno1990/catalog/
         - name: revision
-          value: 'master'
+          value: 'feature/ansible-runner-v0.3'
         - name: deleteExisting
           value: 'true'
     # ansible-runner
