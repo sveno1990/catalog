@@ -49,7 +49,7 @@ spec:
       - name: HOME
         value: $(params.user-home)
       - name: CURL_CA_BUNDLE
-        value: "$(workspaces.ssl-ca-directory.path)$(params.workspaces_ssl_ca_file)"
+        value: "$(workspaces.ssl-ca-directory.path)/$(params.workspaces_ssl_ca_file)"
   steps:
     - name: requirements
       image: $(params.image)
@@ -66,9 +66,9 @@ spec:
 
         if [ -f  requirements.yml ];
         then
-          ansible-galaxy role install -vv \
+          ansible-galaxy role install -c -vv \
             -r requirements.yml
-          ansible-galaxy collection install -vv \
+          ansible-galaxy collection install -c -vv \
             -r requirements.yml
         fi
       workingDir: '$(workspaces.runner-dir.path)/$(params.project-dir)'
