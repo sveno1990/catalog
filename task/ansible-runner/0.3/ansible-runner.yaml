@@ -71,7 +71,7 @@ spec:
           ansible-galaxy collection install -c -vv \
             -r requirements.yml
         fi
-      workingDir: '$(workspaces.runner-dir.path)/$(params.project-dir)'
+      workingDir: '$(workspaces.runner-dir.path)'
 
     - name: run-playbook
       image: $(params.image)
