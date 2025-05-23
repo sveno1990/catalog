@@ -80,7 +80,7 @@ spec:
       command: ['ansible-runner']
       envFrom:
         - secretRef:
-            name: $(radix.build-secrets)
+            name: $(params.secret-name)
 
       args:
         - run
