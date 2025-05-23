@@ -62,6 +62,9 @@ spec:
         if [ -f requirements.txt ];
         then
           pip3 install --user \
+            --trusted-host pypi.org \
+            --trusted-host pypi.python.org \
+            --trusted-host files.pythonhosted.org \
             -r requirements.txt
         fi
 
