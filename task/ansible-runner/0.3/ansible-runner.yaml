@@ -51,10 +51,7 @@ spec:
       - name: HOME
         value: $(params.user-home)
       - name: CURL_CA_BUNDLE
-        value: "$(workspaces.ssl-ca-directory.path)/$(params.workspaces_ssl_ca_file)"
-    envFrom:
-      - secretRef:
-          name: "$(params.secret-name)"
+        value: "$(workspaces.ssl-ca-directory.path)$(params.workspaces_ssl_ca_file)"
   steps:
     - name: requirements
       image: $(params.image)
@@ -81,8 +78,9 @@ spec:
     - name: run-playbook
       image: $(params.image)
       command: ['ansible-runner']
-
-
+      envFrom:
+        - secretRef:
+            name: "$(params.secret-name)"
       args:
         - run
         - $(params.args)
