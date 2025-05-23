@@ -50,8 +50,7 @@ spec:
     env:
       - name: HOME
         value: $(params.user-home)
-      - name: SSL_CERT_FILE
-        value: "$(workspaces.ssl-ca-directory.path)$(params.workspaces_ssl_ca_file)"
+
   steps:
     - name: requirements
       image: $(params.image)
@@ -78,6 +77,9 @@ spec:
     - name: run-playbook
       image: $(params.image)
       command: ['ansible-runner']
+      env:
+        - name: SSL_CERT_FILE
+          value: "$(workspaces.ssl-ca-directory.path)$(params.workspaces_ssl_ca_file)"
       envFrom:
         - secretRef:
             name: "$(params.secret-name)"
