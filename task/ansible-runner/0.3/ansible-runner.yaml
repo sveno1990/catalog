@@ -54,7 +54,7 @@ spec:
         value: "$(workspaces.ssl-ca-directory.path)/$(params.workspaces_ssl_ca_file)"
     envFrom:
       - secretRef:
-          name: $(params.secret-name)
+          name: "$(params.secret-name)"
   steps:
     - name: requirements
       image: $(params.image)
