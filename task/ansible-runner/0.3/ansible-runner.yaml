@@ -50,7 +50,7 @@ spec:
     env:
       - name: HOME
         value: $(params.user-home)
-      - name: CURL_CA_BUNDLE
+      - name: SSL_CERT_FILE
         value: "$(workspaces.ssl-ca-directory.path)$(params.workspaces_ssl_ca_file)"
   steps:
     - name: requirements
