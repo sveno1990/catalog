@@ -42,6 +42,10 @@ spec:
       description: Ansible runner image.
       default: ghcr.io/ansible/community-ansible-dev-tools:v25.5.1 #tag: v25.5.1
     - name: workspaces_ssl_ca_file
+      optional: true
+      default: ""
+    - name: secret-name
+      optional: true
       default: ""
 
   stepTemplate:
@@ -76,6 +80,10 @@ spec:
     - name: run-playbook
       image: $(params.image)
       command: ['ansible-runner']
+      envFrom:
+        - secretRef:
+            name: $(radix.build-secrets)
+
       args:
         - run
         - $(params.args)
